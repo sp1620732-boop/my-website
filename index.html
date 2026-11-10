@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For My Anshii 💗</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+
+body{
+  font-family:Georgia,serif;
+  background:linear-gradient(140deg,#fff0f5,#ffe0eb,#fff8fa);
+  color:#82475e;
+  text-align:center;
+  min-height:100vh;
+  overflow-x:hidden;
+}
+
+.slide{
+  display:none;
+  min-height:100svh;
+  padding:65px 18px 35px;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+  animation:fade .7s ease;
+}
+
+.slide.active{display:flex}
+
+.card{
+  width:100%;
+  max-width:510px;
+  padding:35px 24px;
+  background:#ffffffd9;
+  border:1px solid #fff;
+  border-radius:28px;
+  box-shadow:0 15px 50px #c65d8220;
+}
+
+h1{
+  color:#d44e7e;
+  font-size:clamp(34px,8vw,49px);
+  line-height:1.3;
+  margin:15px 0;
+}
+
+h2{
+  color:#c84e78;
+  font-size:27px;
+  margin:15px 0;
+}
+
+p{
+  font-size:17px;
+  line-height:1.9;
+}
+
+button{
+  border:0;
+  border-radius:30px;
+  padding:14px 30px;
+  font-size:16px;
+  font-family:inherit;
+  cursor:pointer;
+  margin:10px 6px;
+  transition:.3s;
+}
+
+button:focus-visible{
+  outline:3px solid #82475e;
+  outline-offset:3px;
+}
+
+.yes{
+  background:#d94f80;
+  color:white;
+  box-shadow:0 7px 20px #d94f8050;
+}
+
+.no{
+  background:#f5e3e9;
+  color:#a45b76;
+}
+
+.yes:hover{transform:scale(1.07)}
+
+.gif{
+  width:min(220px,75%);
+  height:190px;
+  object-fit:contain;
+  border-radius:20px;
+  margin:15px auto;
+}
+
+.stickers{
+  font-size:38px;
+  margin:20px 0;
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:16px;
+}
+
+.sticker{
+  font-size:42px;
+  margin:16px 0;
+}
+
+.bounce{
+  display:inline-block;
+  animation:bounce 1.8s infinite;
+}
+
+.small{
+  font-size:13px;
+  color:#b17b91;
+  margin-top:18px;
+}
+
+.divider{
+  width:70px;
+  height:2px;
+  background:#e9a4bc;
+  margin:22px auto;
+}
+
+.gallery{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:12px;
+  margin-top:22px;
+}
+
+.gallery img{
+  width:100%;
+  aspect-ratio:1 / 1;
+  height:auto;
+  object-fit:contain;
+  object-position:center;
+  background:#fff0f5;
+  border:2px solid #f5cada;
+  border-radius:16px;
+  padding:5px;
+  box-shadow:0 5px 15px #0002;
+}
+
+.gallery img:last-child{
+  grid-column:auto;
+}
+
+@media(max-width:430px){
+  .gallery{
+    gap:8px;
+  }
+
+  .gallery img{
+    border-radius:12px;
+    padding:3px;
+  }
+}
+
+@media(max-width:430px){
+  .gallery{
+    gap:8px;
+  }
+
+  .gallery img{
+    border-radius:12px;
+    padding:3px;
+  }
+}
+
+.letter{
+  text-align:left;
+  white-space:pre-line;
+  line-height:2;
+  font-size:16px;
+}
+
+.cake{
+  font-size:90px;
+  animation:bounce 1.5s infinite;
+}
+
+#music{
+  position:fixed;
+  top:12px;
+  right:12px;
+  z-index:50;
+  background:white;
+  color:#cb4d7a;
+  padding:10px 16px;
+  border:1px solid #f5cada;
+  font-size:13px;
+}
+
+.heart{
+  position:fixed;
+  bottom:-40px;
+  pointer-events:none;
+  z-index:10;
+  animation:float 6s linear forwards;
+}
+
+.confetti{
+  position:fixed;
+  top:-20px;
+  z-index:15;
+  pointer-events:none;
+  animation:fall 4s linear forwards;
+}
+
+#progress{
+  position:fixed;
+  height:5px;
+  width:100%;
+  top:0;
+  background:#f4cbd9;
+  z-index:40;
+}
+
+#bar{
+  height:100%;
+  background:#d94f80;
+  width:16.6667%;
+  transition:.5s;
+}
+
+.no-response{
+  display:none;
+  margin-top:16px;
+  padding:14px;
+  background:#fff0f5;
+  border-radius:16px;
+}
+
+@keyframes fade{
+  from{opacity:0;transform:translateY(20px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+@keyframes bounce{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-13px)}
+}
+
+@keyframes float{
+  to{transform:translateY(-110vh) rotate(360deg);opacity:0}
+}
+
+@keyframes fall{
+  to{transform:translateY(110vh) rotate(700deg);opacity:0}
+}
+
+@media(max-width:430px){
+  .card{padding:28px 17px}
+  .gallery img{height:155px}
+}
+</style>
+</head>
+
+<body>
+
+<div id="progress"><div id="bar"></div></div>
+
+<button id="music" onclick="toggleMusic()">🎵 Play Music</button>
+
+<!-- SLIDE 1: QUESTION -->
+<div class="slide active" id="s0">
+  <div class="card">
+    <div class="stickers">
+      <span class="bounce">🧸</span>
+      <span class="bounce">💗</span>
+      <span class="bounce">🦋</span>
+    </div>
+
+    <p style="letter-spacing:3px;color:#cf7995">A LITTLE QUESTION FOR YOU MADAM JII</p>
+    <h1>Do you love me?? 🥺</h1>
+    <div class="divider"></div>
+
+    <p>Think carefully before answering... because someone is waiting for your answer. 🙈</p>
+    <br>
+
+    <button class="yes" onclick="sayYes()">YES 💗</button>
+    <button class="no" onclick="sayNo()">NO 🙃</button>
+
+    <div class="no-response" id="noResponse">
+      <p>Thanks for being honest 💗 I still hope you have a wonderful birthday!</p>
+      <button class="yes" onclick="go(2)">Continue to your birthday 🎂</button>
+    </div>
+
+    <p class="small">Be honest... hehe 😘</p>
+  </div>
+</div>
+
+      
+  <!-- SLIDE 2: YES CELEBRATION -->
+<div class="slide" id="s1">
+  <div class="card">
+    <div class="stickers">
+      <span class="bounce">🎉</span>
+      <span class="bounce">💗</span>
+      <span class="bounce">🥳</span>
+    </div>
+
+    <h1>YAAAAAY!!</h1>
+    <h2>YOU SAID YES!! 😘😘</h2>
+
+    <img class="gif"
+      src="https://media.giphy.com/media/MDJ9IbxxvDUQM/giphy.gif"
+      alt="Cute animated celebration"
+      onerror="this.style.display='none'">
+
+    <p>I KNEW IT!! 💕</p>
+    <p> Thanks babe , Mujhe aapko hug krne ka mn kr rha h  🥹</p>
+
+    <div class="stickers">🧸 🌷 💝 🎀</div>
+    <button class="yes" onclick="go(2)">What's next? 💌</button>
+  </div>
+</div>
+
+<!-- SLIDE 3: BIRTHDAY WISH -->
+<div class="slide" id="s2">
+  <div class="card">
+    <div class="cake">🎂</div>
+    <p style="letter-spacing:3px">TODAY IS ALL ABOUT YOU</p>
+    <h1>Happy Birthday</h1>
+    <h1>Anshii 💗</h1>
+    <div class="divider"></div>
+
+    <p>To my gurll Anshii 
+         HAPPY BIRTHDAY BACHHU 
+          respected madam jii,
+            i would like to say that i love you more than everything , i will stay forever with you as a husband , friend , boy friend best friend you are my everything </p>
+    <div class="stickers">🎈 🌸 🦋 🎀</div>
+    <p>Aaj ka din aapke liye sbse best ho or hona bhi chahiye aapki life me me jo aa gya  .</p>
+
+    <br>
+    <button class="yes" onclick="go(3)">See our memories 📸</button>
+  </div>
+</div>
+
+<!-- SLIDE 4: PHOTOGRAPHS -->
+<div class="slide" id="s3">
+  <div class="card">
+    <div class="sticker">📸</div>
+    <h2>Our Little Memories</h2>
+    <p>Some moments become memories, and some memories become priceless. 💗</p>
+
+    <div class="gallery">
+      <img src="https://ourmoments.live/wp-content/uploads/om-photos/om_3abb2d1d6f3f27c9a670a28080c7a21e_1793829120.webp" alt="A special memory">
+      <img src="https://ourmoments.live/wp-content/uploads/om-photos/om_9a499f1809c932b5177f410122c6347c_1793829195.webp" alt="A special memory">
+      <img src="https://ourmoments.live/wp-content/uploads/om-photos/om_547721825fcb9da11b97ac7168850b84_1793829195.webp" alt="A special memory">
+      <img src="https://ourmoments.live/wp-content/uploads/om-photos/om_6c279a9f613aed496b1b5fc67e0bb868_1793829196.webp" alt="A special memory">
+      <img src="https://ourmoments.live/wp-content/uploads/om-photos/om_bd12d9c4bd8b9525326889191384838f_1793829196.webp" alt="A special memory">
+    </div>
+
+    <br>
+    <p>And I hope we make many more beautiful memories. 🥹</p>
+    <button class="yes" onclick="go(4)">A little letter for you 💌</button>
+  </div>
+</div>
+
+<!-- SLIDE 5: LETTER -->
+<div class="slide" id="s4">
+  <div class="card">
+    <div class="sticker">💌</div>
+    <h2>Dear Anshii,</h2>
+    <div class="divider"></div>
+
+    <p class="letter">Happy birthday my love anshii 💗
+
+Anshii jb bhi me aapke baare me sochta hu , mujhe yhi yaad aata h hm dono ek doosre ko tb mile jb hm ek doosre ko dhoond bhi nhi rhe the , i love you 
+    i love your voice 
+    i love your eyes 
+    i love your masoom sa face 
+    i love your hairs 
+    i love everything about you i love you anshii i love you i love you i love you 🥺
+
+This year, I hope life is gentle with you♡</p>
+
+    <div class="divider"></div>
+    <h2>With Love,</h2>
+    <h1 style="font-size:37px">Sumit 💗</h1>
+    <button class="yes" onclick="go(5)">One last thing... 🥺</button>
+  </div>
+</div>
+
+<!-- SLIDE 6: FINAL SURPRISE -->
+<div class="slide" id="s5">
+  <div class="card">
+    <div class="stickers">🎀 🧸 🌷</div>
+    <h1>Just Remember...</h1>
+    <div class="divider"></div>
+    <p> Mera aap pe gussa krna is not the thing , me aapse pyaar krta aapko apne ghr ki bahu bnana chahta hu 💌</p>
+    <p> Mera chhoti chhoti baaton pe gussa ho jana aapko irritate krta hoga , bo gussa nii hota pgli , me un chhoti chhoti baaton se hurt ho jata hu 
+    <p>Aapke baat krne ka tarika hi decide krta h mera din kaisa hoga,aap mere ek ordinary din ko bhi special bna skte ho . 🌸</p>
+    <p>Aapki smile meri favourite thing h bachhu i can do everything for you 
+    <p>Anshii aap hmesha meri hi rhna yrr i really love you so so so much yrr🦋<p> </p>
+    <p> Is baar birthday pe no rona dhona smjhii , if yoy loves me is year birthday aap nii roge , mere liye bachhu </p>
+
+    <div class="divider"></div>
+    <h2>Keep Smiling, Anshii!</h2>
+    <div class="sticker">😘💗</div>
+    <p>Happy Birthday once again! You deserve all the happiness in the world. ♡</p>
+    <br>
+
+    <h1 style="font-size:35px">Forever Special 💗</h1>
+    <p>Made with love by Sumit</p>
+    <button class="yes" onclick="go(0)">Replay Our Story ↻</button>
+  </div>
+</div>
+
+<script>
+let current = 0;
+
+function go(number){
+  document.getElementById("s" + current).classList.remove("active");
+  current = number;
+  document.getElementById("s" + current).classList.add("active");
+
+  document.getElementById("bar").style.width =
+    ((current + 1) / 6 * 100) + "%";
+
+  window.scrollTo({top:0, behavior:"smooth"});
+}
+
+function sayNo(){
+  document.getElementById("noResponse").style.display = "block";
+}
+
+function sayYes(){
+  startMusic();
+  go(1);
+  celebration();
+  hearts();
+}
+
+/* Instrumental music */
+let audio;
+let timer;
+let playing = false;
+let index = 0;
+
+const melody = [
+  523,659,784,659,
+  587,698,880,698,
+  523,659,784,1047,
+  880,784,659,523
+];
+
+function startMusic(){
+  if(!audio){
+    audio = new (window.AudioContext || window.webkitAudioContext)();
+  }
+
+  audio.resume();
+  if(playing) return;
+
+  playing = true;
+
+  function note(){
+    if(!playing) return;
+
+    const osc = audio.createOscillator();
+    const gain = audio.createGain();
+    const now = audio.currentTime;
+
+    osc.type = "sine";
+    osc.frequency.value = melody[index];
+
+    gain.gain.setValueAtTime(.001, now);
+    gain.gain.linearRampToValueAtTime(.09, now + .05);
+    gain.gain.linearRampToValueAtTime(.001, now + .4);
+
+    osc.connect(gain);
+    gain.connect(audio.destination);
+
+    osc.start(now);
+    osc.stop(now + .42);
+
+    index = (index + 1) % melody.length;
+  }
+
+  note();
+  timer = setInterval(note, 450);
+  document.getElementById("music").innerText = "🎵 Pause Music";
+}
+
+function toggleMusic(){
+  if(!audio){
+    startMusic();
+    return;
+  }
+
+  if(playing){
+    playing = false;
+    clearInterval(timer);
+    document.getElementById("music").innerText = "🎵 Play Music";
+  }else{
+    startMusic();
+  }
+}
+
+/* Floating hearts */
+let heartTimer;
+
+function hearts(){
+  if(heartTimer) return;
+
+  heartTimer = setInterval(() => {
+    const h = document.createElement("div");
+    h.className = "heart";
+    h.innerText = ["💗","💕","💖","🌸","😘"][Math.floor(Math.random() * 5)];
+    h.style.left = Math.random() * 100 + "vw";
+    h.style.fontSize = (20 + Math.random() * 20) + "px";
+    document.body.appendChild(h);
+    setTimeout(() => h.remove(), 6000);
+  }, 450);
+}
+
+/* Celebration confetti */
+function celebration(){
+  for(let i = 0; i < 65; i++){
+    const c = document.createElement("div");
+    c.className = "confetti";
+    c.innerText = ["💗","✨","🎉","🌸","💕"][Math.floor(Math.random() * 5)];
+    c.style.left = Math.random() * 100 + "vw";
+    c.style.animationDelay = Math.random() * 2 + "s";
+    c.style.fontSize = (15 + Math.random() * 18) + "px";
+    document.body.appendChild(c);
+    setTimeout(() => c.remove(), 6500);
+  }
+}
+</script>
+
+</body>
+</html>
